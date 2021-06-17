@@ -1,6 +1,7 @@
 # Imports
 from utils import (
     multicrop_loader,
+    loaddata,
     labeled_loader,
     paws_trainer,
     config,
@@ -8,7 +9,6 @@ from utils import (
     lars_optimizer,
 )
 from models import wide_resnet
-from utils import loaddata
 import matplotlib.pyplot as plt
 import tensorflow as tf
 import time
