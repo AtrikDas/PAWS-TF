@@ -22,6 +22,7 @@ def loadData(path):
     features = pictures.reshape(
         (len(pictures), 3, 32, 32)).transpose(0, 2, 3, 1)
 
-    print(features)
-    print(classes)
-    return features, classes
+    X_train, X_test = np.split(features, [int(len(features)*0.8)])
+    Y_train, Y_test = np.split(classes, [int(len(classes)*0.8)])
+
+    return X_train, Y_train, X_test, Y_test

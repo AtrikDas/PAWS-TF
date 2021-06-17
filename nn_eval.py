@@ -33,13 +33,8 @@ def snn(query, h_train, h_labs, temp=0.1):
 AUTO = tf.data.AUTOTUNE
 
 # Load dataset
-(x_train, y_train), (x_test, y_test) = tf.keras.datasets.cifar10.load_data()
 
-# TODO - Add test set
-# x_train, y_train = loaddata.loadData('data_batch.txt')
-# print(x_train)
-# print(y_train)
-
+x_train, y_train, x_test, y_test = loaddata.loadData('data_batch.txt')
 
 # Prepare Dataset object for the test set
 test_ds = tf.data.Dataset.from_tensor_slices((x_test, y_test))

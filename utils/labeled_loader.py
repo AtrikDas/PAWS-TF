@@ -6,9 +6,7 @@ import os
 GLOBAL_SCALE = [0.75, 1.0]
 AUTO = tf.data.AUTOTUNE
 # (X_TRAIN, Y_TRAIN), (_, _) = tf.keras.datasets.cifar10.load_data()
-X_TRAIN, Y_TRAIN = loaddata.loadData('data_batch.txt')
-print(X_TRAIN)
-print(Y_TRAIN)
+X_TRAIN, Y_TRAIN, _, _ = loaddata.loadData('data_batch.txt')
 
 
 def onehot_encode(labels, label_smoothing=0.1):

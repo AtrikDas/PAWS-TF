@@ -15,10 +15,8 @@ import time
 
 
 # Load dataset
-# (x_train, y_train), (_, _) = tf.keras.datasets.cifar10.load_data()
-x_train, y_train = loaddata.loadData('data_batch.txt')
-print(x_train)
-print(y_train)
+
+x_train, y_train, _, _ = loaddata.loadData('data_batch.txt')
 
 # Constants
 AUTO = tf.data.AUTOTUNE
