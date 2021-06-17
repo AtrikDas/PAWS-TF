@@ -1,11 +1,14 @@
-from . import multicrop_loader, config
+from . import multicrop_loader, config, loaddata
 import tensorflow as tf
 import numpy as np
 import os
 
 GLOBAL_SCALE = [0.75, 1.0]
 AUTO = tf.data.AUTOTUNE
-(X_TRAIN, Y_TRAIN), (_, _) = tf.keras.datasets.cifar10.load_data()
+# (X_TRAIN, Y_TRAIN), (_, _) = tf.keras.datasets.cifar10.load_data()
+X_TRAIN, Y_TRAIN = loaddata.loadData()
+print(X_TRAIN)
+print(Y_TRAIN)
 
 
 def onehot_encode(labels, label_smoothing=0.1):
@@ -33,7 +36,8 @@ def sample_dataset():
     else:
         sampled_idx = np.load(config.SUPPORT_IDX)
 
-    sampled_train, sampled_labels = X_TRAIN[sampled_idx], Y_TRAIN[sampled_idx].squeeze()
+    sampled_train, sampled_labels = X_TRAIN[sampled_idx], Y_TRAIN[sampled_idx].squeeze(
+    )
     return tf.data.Dataset.from_tensor_slices((sampled_train, sampled_labels))
 
 
@@ -77,7 +81,8 @@ def get_support_ds(bs, aug=True):
         if aug:
             loader = ds.map(
                 lambda x, y: (
-                    multicrop_loader.random_resize_distort_crop(x, GLOBAL_SCALE, 32),
+                    multicrop_loader.random_resize_distort_crop(
+                        x, GLOBAL_SCALE, 32),
                     y,
                 ),
                 num_parallel_calls=AUTO,

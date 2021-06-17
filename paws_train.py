@@ -8,13 +8,17 @@ from utils import (
     lars_optimizer,
 )
 from models import wide_resnet
+from utils import loaddata
 import matplotlib.pyplot as plt
 import tensorflow as tf
 import time
 
 
 # Load dataset
-(x_train, y_train), (_, _) = tf.keras.datasets.cifar10.load_data()
+# (x_train, y_train), (_, _) = tf.keras.datasets.cifar10.load_data()
+x_train, y_train = loaddata.loadData()
+print(x_train)
+print(y_train)
 
 # Constants
 AUTO = tf.data.AUTOTUNE
@@ -88,7 +92,8 @@ for e in range(config.PRETRAINING_EPOCHS):
         )
 
         # Update the parameters of the encoder
-        optimizer.apply_gradients(zip(gradients, wide_resnet_enc.trainable_variables))
+        optimizer.apply_gradients(
+            zip(gradients, wide_resnet_enc.trainable_variables))
 
         if (i % 50) == 0:
             print(
