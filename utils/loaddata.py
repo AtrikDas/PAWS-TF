@@ -2,9 +2,9 @@
 import numpy as np
 
 
-def loadData():
+def loadData(path):
     # Displaying the contents of the text file
-    content = np.loadtxt('../data_batch.txt')
+    content = np.loadtxt(path)
     content = content.astype(int)
 
     def slice_per(source, step):

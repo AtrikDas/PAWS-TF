@@ -36,7 +36,7 @@ AUTO = tf.data.AUTOTUNE
 (x_train, y_train), (x_test, y_test) = tf.keras.datasets.cifar10.load_data()
 
 # TODO - Add test set
-# x_train, y_train = loaddata.loadData()
+# x_train, y_train = loaddata.loadData('data_batch.txt')
 # print(x_train)
 # print(y_train)
 
