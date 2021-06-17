@@ -11,7 +11,7 @@ def loadData(path):
         return [source[i::step] for i in range(step)]
 
     array = slice_per(content, 3073)
-    classes = array[0]
+    classes = array[0].astype(np.uint8)
 
     data = np.split(content, 501)
     data[0]
